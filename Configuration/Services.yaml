@@ -1,0 +1,14 @@
+# Configuration/Services.yaml
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Libeo\LboGlossaire\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  Libeo\LboGlossaire\DataHandler\Glossary:
+    arguments:
+      $termRepository: '@Libeo\LboGlossaire\Domain\Repository\TermRepository'

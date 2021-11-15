@@ -1,0 +1,24 @@
+{
+    "name": "libeo/lbo_glossaire",
+    "type": "typo3-cms-extension",
+    "description": "Extension typo3 permettant l'utilisation d'un glossaire",
+    "authors": [
+        {
+            "name": "Octavio Cim Jr",
+            "email": "ocim@libeo.com"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^10.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Libeo\\LboGlossaire\\": "Classes"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "lbo_glossaire"
+        }
+    }
+}

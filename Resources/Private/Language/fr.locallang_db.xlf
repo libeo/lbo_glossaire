@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2016-06-22T14:57:43Z"
+          product-name="lbo_glossaire">
+        <header/>
+        <body>
+            <trans-unit id="tx_lboglossaire_glossary_plugin">
+                <target>Glossaire</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term">
+                <target>Terme du glossaire</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term.term">
+                <target>Terme</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term.description">
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term.hide_in_glossary_page">
+                <target>Ne pas afficher dans la page glossaire</target>
+            </trans-unit>
+            <trans-unit id="flexforms.action">
+                <target>Affichage</target>
+            </trans-unit>
+            <trans-unit id="flexforms.action.menu">
+                <target>Menu</target>
+            </trans-unit>
+            <trans-unit id="flexforms.action.listing">
+                <target>Listage des termes</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

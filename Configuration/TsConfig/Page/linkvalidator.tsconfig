@@ -1,0 +1,3 @@
+mod.linkvalidator.searchFields {
+	tx_lboglossaire_domain_model_term = description
+}

@@ -1,0 +1,23 @@
+plugin.tx_lboglossaire_glossary {
+    view {
+        # cat=plugin.tx_lboglossaire_glossary/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:lbo_glossaire/Resources/Private/Templates/
+        # cat=plugin.tx_lboglossaire_glossary/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:lbo_glossaire/Resources/Private/Partials/
+        # cat=plugin.tx_lboglossaire_glossary/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:lbo_glossaire/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_lboglossaire_glossary//a; type=string; label=Default storage PID
+        storagePid =
+    }
+    settings {
+        # cat=plugin.tx_lboglossaire_glossary//a; type=string; label=Glossary Listing
+        listingPid =
+    }
+
+    professional {
+        storagePid =
+        listingPid =
+    }
+}

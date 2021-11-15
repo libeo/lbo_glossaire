@@ -1,0 +1,99 @@
+plugin.tx_lboglossaire_glossary {
+    view {
+        templateRootPaths.0 = EXT:lbo_glossaire/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_lboglossaire_glossary.view.templateRootPath}
+        partialRootPaths.0 = EXT:lbo_glossaire/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_lboglossaire_glossary.view.partialRootPath}
+        layoutRootPaths.0 = EXT:lbo_glossaire/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_lboglossaire_glossary.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_lboglossaire_glossary.persistence.storagePid}
+    }
+}
+
+config.recordLinks.glossary {
+    // Do not force link generation when the records are hidden or deleted.
+    forceLink = 0
+
+    typolink {
+        parameter = {$plugin.tx_lboglossaire_glossary.settings.listingPid}
+        section {
+            field = term
+            postUserFunc = Libeo\LboGlossaire\Userfunc\StringUserfunc->createUrlAlias
+        }
+        ATagParams = class="term-anchor"
+        useCacheHash = 1
+    }
+}
+plugin.tx_linkhandler.lexique < plugin.tx_linkhandler.glossary
+plugin.tx_linkhandler.lexique.typolink.parameter = {$plugin.tx_lboglossaire_glossary.professional.listingPid}
+
+plugin.tx_linkhandler.lexique < plugin.tx_linkhandler.glossary
+plugin.tx_linkhandler.lexique.typolink.parameter = {$plugin.tx_lboglossaire_glossary.professional.listingPid}
+
+[siteLanguage("twoLetterIsoCode") == "en"]
+    # Si un contenu anglais contient un lien vers un terme francais, on cherche plutôt le terme anglais associé.
+    config.recordLinks.glossary.typolink.section.override {
+        if {
+            equals.field = sys_language_uid
+            value = 0
+        }
+        cObject = CONTENT
+        cObject {
+            table = tx_lboglossaire_domain_model_term
+            select {
+                pidInList = {$plugin.tx_lboglossaire_glossary.persistence.storagePid}
+                selectFields = term
+                where.data = field:uid
+                where.intval = 1
+                where.wrap = uid=|
+                max = 1
+            }
+            renderObj = TEXT
+            renderObj.field = term
+        }
+    }
+
+    plugin.tx_linkhandler.lexique.typolink.section.override {
+        if {
+            equals.field = sys_language_uid
+            value = 0
+        }
+        cObject = CONTENT
+        cObject {
+            table = tx_lboglossaire_domain_model_term
+            select {
+                pidInList = {$plugin.tx_lboglossaire_glossary.professional.storagePid}
+                selectFields = term
+                where.data = field:uid
+                where.intval = 1
+                where.wrap = uid=|
+                max = 1
+            }
+            renderObj = TEXT
+            renderObj.field = term
+        }
+    }
+
+    plugin.tx_linkhandler.lexique.typolink.section.override {
+        if {
+            equals.field = sys_language_uid
+            value = 0
+        }
+        cObject = CONTENT
+        cObject {
+            table = tx_lboglossaire_domain_model_term
+            select {
+                pidInList = {$plugin.tx_lboglossaire_glossary.professional.storagePid}
+                selectFields = term
+                where.data = field:uid
+                where.intval = 1
+                where.wrap = sys_language_uid=1 AND l10n_parent=|
+                max = 1
+            }
+            renderObj = TEXT
+            renderObj.field = term
+        }
+    }
+[global]

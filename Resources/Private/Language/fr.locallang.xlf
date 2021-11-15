@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2016-06-22T14:57:43Z"
+          product-name="lbo_glossaire">
+        <header/>
+        <body>
+            <trans-unit id="tx_lboglossaire_domain_model_term">
+                <target>Terme du glossaire</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term.term">
+                <target>Terme</target>
+            </trans-unit>
+            <trans-unit id="tx_lboglossaire_domain_model_term.description">
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="linkhandler.tab.name">
+                <target>Terme du glossaire</target>
+            </trans-unit>
+            <trans-unit id="linkhandler.tab.lexique.name">
+                <target>Lexique Professionel</target>
+            </trans-unit>
+            <trans-unit id="field.search.placeholder">
+                <target>Rechercher dans le lexique</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
