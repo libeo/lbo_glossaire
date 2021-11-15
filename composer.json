@@ -2,6 +2,7 @@
     "name": "libeo/lbo_glossaire",
     "type": "typo3-cms-extension",
     "description": "Extension typo3 permettant l'utilisation d'un glossaire",
+    "license": "AGPL-3.0",
     "authors": [
         {
             "name": "Octavio Cim Jr",
