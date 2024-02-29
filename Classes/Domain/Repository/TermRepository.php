@@ -55,8 +55,17 @@ class TermRepository extends Repository
      * Return all terms to show in a list meaning hide_in_glossary_page is false
      * @return array All terms on database
      */
-    public function getTermsToListFromRepository(): array
+    public function getTermsToListFromRepository($pids = null): array
     {
-        return $this->findByHideInGlossaryPage(0)->toArray();
+        $query = $this->createQuery();
+
+        $constraints = [$query->equals('hideInGlossaryPage', 0)];
+        if(!empty($pids) && is_array($pids)){
+            $constraints[] = $query->in('pid', $pids);
+        }
+
+        return $query->matching(
+            $query->logicalAnd(...$constraints)
+        )->execute()->toArray();
     }
 }

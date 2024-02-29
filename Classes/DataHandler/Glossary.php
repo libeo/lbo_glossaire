@@ -44,7 +44,11 @@ class Glossary implements SingletonInterface
     public function __construct(TermRepository $termRepository)
     {
         $this->termRepository = $termRepository;
-        $this->terms = $this->termRepository->getTermsToListFromRepository();
+    }
+
+    public function init(?array $pids = null):void
+    {
+        $this->terms = $this->termRepository->getTermsToListFromRepository($pids);
         $this->indexSplitAlphaOthers();
     }
 
