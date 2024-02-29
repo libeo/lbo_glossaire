@@ -42,6 +42,18 @@ class GlossaryController extends ActionController
      */
     public function listAction()
     {
-        $this->view->assign('glossary', GeneralUtility::makeInstance(Glossary::class));
+        $glossary = GeneralUtility::makeInstance(Glossary::class);
+        $glossary->init($this->getPids());
+        $this->view->assign('glossary', $glossary);
+    }
+
+    protected function getPids(): ?array
+    {
+        $cObj = $this->configurationManager->getContentObject();
+        $pids = null;
+        if ($cObj) {
+            $pids = GeneralUtility::intExplode(',', $this->configurationManager->getContentObject()->data['pages'] ?? '', true);
+        }
+        return $pids;
     }
 }
