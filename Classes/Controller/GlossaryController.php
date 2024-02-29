@@ -52,7 +52,7 @@ class GlossaryController extends ActionController
         $cObj = $this->configurationManager->getContentObject();
         $pids = null;
         if ($cObj) {
-            $pids = GeneralUtility::intExplode(',', $this->configurationManager->getContentObject()->data['pages'] ?? '', true);
+            $pids = GeneralUtility::intExplode(',', $cObj->data['pages'] ?? '', true);
         }
         return $pids;
     }
