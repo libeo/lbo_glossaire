@@ -28,6 +28,7 @@ namespace Libeo\LboGlossaire\Controller;
  ***************************************************************/
 
 use Libeo\LboGlossaire\DataHandler\Glossary;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -40,16 +41,18 @@ class GlossaryController extends ActionController
     /**
      * Show form and all terms on glossary
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $glossary = GeneralUtility::makeInstance(Glossary::class);
         $glossary->init($this->getPids());
         $this->view->assign('glossary', $glossary);
+
+        return $this->htmlResponse();
     }
 
     protected function getPids(): ?array
     {
-        $cObj = $this->configurationManager->getContentObject();
+        $cObj = $this->request->getAttribute('currentContentObject');
         $pids = null;
         if ($cObj) {
             $pids = GeneralUtility::intExplode(',', $cObj->data['pages'] ?? '', true);

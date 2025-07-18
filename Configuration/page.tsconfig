@@ -1,0 +1,3 @@
+[extensionIsLoaded('linkvalidator')]
+    @import 'EXT:lbo_glossaire/Configuration/TsConfig/Page/linkvalidator.tsconfig'
+[END]
