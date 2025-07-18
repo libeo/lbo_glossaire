@@ -1,16 +1,15 @@
 <?php
 
 use Libeo\LboGlossaire\Controller\GlossaryController;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
 // Plugin de liste du glossaire
 ExtensionUtility::configurePlugin(
-    'Libeo.LboGlossaire',
+    'LboGlossaire',
     'Glossary',
     array(
         GlossaryController::class => 'list'
@@ -18,11 +17,6 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     array(
         GlossaryController::class => 'list'
-    )
+    ),
+    ExtensionUtility::PLUGIN_TYPE_PLUGIN
 );
-
-
-// Configuration Linkvalidator
-if (ExtensionManagementUtility::isLoaded('linkvalidator')) {
-    ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lbo_glossaire/Configuration/TsConfig/Page/linkvalidator.tsconfig">');
-}

@@ -1,10 +1,10 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Libeo.lbo_glossaire',
+    'lbo_glossaire',
     'Glossary',
     'LLL:EXT:lbo_glossaire/Resources/Private/Language/locallang_db.xlf:tx_lboglossaire_glossary_plugin'
 );
